@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<icon name="desktopdecal_cyphersystem" file="graphics/decals/desktopdecal_cyphersystem.png" />
+
+	<!-- Buttons -->
+	<icon name="details" file="graphics/icons/details.png" />
+	<icon name="details_down" file="graphics/icons/details_down.png" />
+	<icon name="button_bigcheckon" file="graphics/icons/button_bigcheckon.png" />
+	<icon name="button_bigcheckoff" file="graphics/icons/button_bigcheckoff.png" />
+
+	<!-- Dragging -->
+	<icon name="action_attack" file="graphics/icons/action_attack.png" />
+	<icon name="action_damage" file="graphics/icons/action_damage.png" />
+
+	<!-- Rolls -->
+	<icon name="roll_attack" file="graphics/icons/roll_attack.png" />
+	<icon name="roll_damage" file="graphics/icons/roll_damage.png" />
+	<icon name="roll_heal" file="graphics/icons/roll_heal.png" />
+	<icon name="roll1" file="graphics/icons/roll1.png" />
+	<icon name="roll17" file="graphics/icons/roll17.png" />
+	<icon name="roll18" file="graphics/icons/roll18.png" />
+	<icon name="roll19" file="graphics/icons/roll19.png" />
+	<icon name="roll20" file="graphics/icons/roll20.png" />
+	<icon name="task0" file="graphics/icons/task0.png" />
+	<icon name="task1" file="graphics/icons/task1.png" />
+	<icon name="task2" file="graphics/icons/task2.png" />
+	<icon name="task3" file="graphics/icons/task3.png" />
+	<icon name="task4" file="graphics/icons/task4.png" />
+	<icon name="task5" file="graphics/icons/task5.png" />
+	<icon name="task6" file="graphics/icons/task6.png" />
+	<icon name="task7" file="graphics/icons/task7.png" />
+	<icon name="task8" file="graphics/icons/task8.png" />
+	<icon name="task9" file="graphics/icons/task9.png" />
+	<icon name="task10" file="graphics/icons/task10.png" />
+
+	<!-- Override CoreRPG ruleset graphics -->
+
+	<!-- Common -->
+	<icon name="window_resize_filled" file="graphics/icons/window_resize_filled.png" />
+	
+	<!-- Chat window -->
+	<icon name="chat_wait" file="graphics/icons/chat_wait.png" />
+
+	<!-- Character list -->
+	<icon name="charlist_typing" file="graphics/icons/charlist_typing.png" />
+
+	<!-- Minimized icons -->	
+	<icon name="minimized_image" file="graphics/icons/minimized_image.png" />
+	<icon name="minimized_encounter" file="graphics/icons/minimized_encounter.png" />
+	<icon name="minimized_item" file="graphics/icons/minimized_item.png" />
+	<icon name="minimized_npc" file="graphics/icons/minimized_npc.png" />
+	<icon name="minimized_utility" file="graphics/icons/minimized_utility.png" />
+	<icon name="minimized_reference" file="graphics/icons/minimized_reference.png" />
+	<icon name="minimized_note" file="graphics/icons/minimized_note.png" />
+	<icon name="minimized_combat" file="graphics/icons/minimized_combat.png" />
+
+	<!-- Modifier stack -->
+	<icon name="modcollector" file="graphics/icons/modcollector.png" />
+	<icon name="modcollector_counter" file="graphics/icons/modcollector_counter.png" />
+
+	<!-- Sidebar -->
+	<icon name="button_ct" file="graphics/sidebar/button_ct.png" />
+	<icon name="button_ct_down" file="graphics/sidebar/button_ct_down.png" />
+	<icon name="button_partysheet" file="graphics/sidebar/button_partysheet.png" />
+	<icon name="button_partysheet_down" file="graphics/sidebar/button_partysheet_down.png" />
+	<icon name="button_options" file="graphics/sidebar/button_options.png" />
+	<icon name="button_options_down" file="graphics/sidebar/button_options_down.png" />
+	<!-- DEPRECATED
+	<icon name="button_tables" file="graphics/sidebar/button_tables.png" />
+	<icon name="button_tables_down" file="graphics/sidebar/button_tables_down.png" />
+	-->
+	<icon name="button_calendar" file="graphics/sidebar/button_calendar.png" />
+	<icon name="button_calendar_down" file="graphics/sidebar/button_calendar_down.png" />
+	<icon name="button_color" file="graphics/sidebar/button_color.png" />
+	<icon name="button_color_down" file="graphics/sidebar/button_color_down.png" />
+	<icon name="button_light" file="graphics/sidebar/button_light.png" />
+	<icon name="button_light_down" file="graphics/sidebar/button_light_down.png" />
+	<icon name="button_modifiers" file="graphics/sidebar/button_modifiers.png" />
+	<icon name="button_modifiers_down" file="graphics/sidebar/button_modifiers_down.png" />
+	<icon name="button_effects" file="graphics/sidebar/button_effects.png" />
+	<icon name="button_effects_down" file="graphics/sidebar/button_effects_down.png" />
+
+	<!-- Campaign lists -->
+	<!-- DEPRECATED
+	<icon name="title_story" file="graphics/tabs/title_story.png" />
+	<icon name="title_images" file="graphics/tabs/title_images.png" />
+	<icon name="title_items" file="graphics/tabs/title_items.png" />
+	<icon name="title_parcels" file="graphics/tabs/title_parcels.png" />
+	<icon name="title_npcs" file="graphics/tabs/title_npcs.png" />
+	<icon name="title_encounters" file="graphics/tabs/title_encounters.png" />
+	<icon name="title_notes" file="graphics/tabs/title_notes.png" />
+	-->
+</root>
