@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<distance>
+		<base>5</base>
+		<diagmult>1.5</diagmult>
+		<suffix>'</suffix>
+	</distance>
+	
+	<die name="dF" merge="delete" />
+	<die name="d4" merge="delete" />
+	<die name="d8" merge="delete" />
+	<die name="d12" merge="delete" />
+	<die name="d6">
+		<icon>d6icon</icon>
+		<position>170,-68</position>
+	</die>
+		
+	<customdie name="d3">
+		<model>d6</model>
+		<menuicon>customdice</menuicon>
+		<script>
+			function onValue(result)
+				return math.ceil(result/2);
+			end
+		</script>
+	</customdie>
+	<customdie name="d2">
+		<model>d6</model>
+		<menuicon>customdice</menuicon>
+		<script>
+			function onValue(result)
+				return math.ceil(result/3);
+			end
+		</script>
+	</customdie>
+</root>

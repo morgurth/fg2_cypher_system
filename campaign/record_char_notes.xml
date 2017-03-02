@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="charsheet_notes">
+		<sheetdata>
+			<frame_char name="backgroundframe">
+				<anchored position="insidetopleft" offset="15,0">
+					<bottom anchor="center" offset="50" />
+					<right offset="-29" />
+				</anchored>
+			</frame_char>
+			<label_frametop>
+				<anchored to="backgroundframe" />
+				<static textres="char_label_background" />
+			</label_frametop>
+			<stringu name="background">
+				<anchored to="backgroundframe">
+					<top offset="30" />
+					<left offset="15" />
+					<right offset="-20" />
+					<bottom offset="-15" />
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+			</stringu>
+			<scrollbar>
+				<anchored to="background" />
+				<target>background</target>
+			</scrollbar>
+
+			<frame_char name="notesframe">
+				<anchored>
+					<top anchor="center" offset="50" />
+					<left offset="15" />
+					<bottom offset="-5" />
+					<right offset="-29" />
+				</anchored>
+			</frame_char>
+			<label_frametop>
+				<anchored to="notesframe" />
+				<static textres="char_label_notes" />
+			</label_frametop>
+			<stringu name="notes">
+				<anchored to="notesframe">
+					<top offset="30" />
+					<left offset="15" />
+					<right offset="-20" />
+					<bottom offset="-15" />
+				</anchored>
+				<multilinespacing>20</multilinespacing>
+			</stringu>
+			<scrollbar>
+				<anchored to="notes" />
+				<target>notes</target>
+			</scrollbar>
+		</sheetdata>
+	</windowclass>
+</root>

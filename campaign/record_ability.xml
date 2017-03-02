@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<windowclass name="ability">
+		<frame>referencepage</frame>
+		<placement>
+			<size width="400" height="350" />
+		</placement>
+		<sizelimits>
+			<dynamic />
+		</sizelimits>
+		<minimize>minimized_reference</minimize>
+		<tooltip field="name" />
+		<script>
+			function onInit()
+				onLockChanged();
+				DB.addHandler(DB.getPath(getDatabaseNode(), "locked"), "onUpdate", onLockChanged);
+			end
+
+			function onClose()
+				DB.removeHandler(DB.getPath(getDatabaseNode(), "locked"), "onUpdate", onLockChanged);
+			end
+
+			function onLockChanged()
+				if header.subwindow then
+					header.subwindow.update();
+				end
+				if main.subwindow then
+					main.subwindow.update();
+				end
+			end
+		</script>
+		<sheetdata>
+			<sub_record_header name="header">
+				<class>ability_header</class>
+			</sub_record_header>
+
+			<frame_record name="contentframe">
+				<anchored>
+					<top parent="header" anchor="bottom" offset="15" />
+					<left offset="35" />
+					<right offset="-35" />
+					<bottom offset="-32" />
+				</anchored>
+				<frame offset="20,17,20,17" />
+			</frame_record>
+
+			<subwindow_record name="main">
+				<class>ability_main</class>
+				<activate />
+			</subwindow_record>
+
+			<scrollbar_record>
+				<target>main</target>
+			</scrollbar_record>
+			
+			<resize_referencepage />
+			<close_referencepage />
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="ability_header">
+		<margins control="0,0,0,7" />
+		<script>
+			function onInit()
+				update();
+			end
+			function update()
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				name.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<link_record_header>
+				<class>ability</class>
+			</link_record_header>
+
+			<string_record_name name="name">
+				<anchored>
+					<top offset="5"/>
+					<left offset="40" />
+					<right offset="-40" />
+				</anchored>
+			</string_record_name>
+
+			<anchor_record_header_right />
+			<icon_record_locked />
+			<button_record_locked />
+		</sheetdata>
+	</windowclass>
+
+	<windowclass name="ability_main">
+		<margins control="0,0,0,2" />
+		<script>
+			function onInit()
+				update();
+			end
+			function update()
+				local bReadOnly = WindowManager.getReadOnlyState(getDatabaseNode());
+				statcost.setReadOnly(bReadOnly);
+				stat.setReadOnly(bReadOnly);
+				description.setReadOnly(bReadOnly);
+			end
+		</script>
+		<sheetdata>
+			<anchor_column name="columnanchor" />
+
+			<label_column name="statcost_label">
+				<static textres="ability_label_cost" />
+			</label_column>
+			<number_column name="statcost">
+				<min>0</min>
+			</number_column>
+
+			<line_column name="divider" />
+
+			<button_stringcycler name="stat">
+				<anchored to="statcost" position="righthigh" offset="10,0" width="60" />
+				<parameters>
+					<labels>Might|Speed|Intellect</labels>
+					<values>might|speed|intellect</values>
+					<defaultlabel>-</defaultlabel>
+				</parameters>
+			</button_stringcycler>
+			
+			<string_column_full name="description" />
+		</sheetdata>
+	</windowclass>
+</root>

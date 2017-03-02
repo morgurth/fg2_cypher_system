@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<template name="number_charabilitymax">
+		<basicnumber>
+			<default>10</default>
+			<script>
+				local nLast;
+				function onInit()
+					nLast = getValue();
+				end
+				function onValueChanged()
+					if window[target[1]].getValue() == nLast then
+						window[target[1]].setValue(getValue());
+					end
+					nLast = getValue();
+				end
+			</script>
+		</basicnumber>
+	</template>
+	<template name="number_charabilitypool">
+		<number_dropadd>
+			<font>char_pool</font>
+			<default>10</default>
+			<droptypes>
+				<type>number</type>
+				<type>recovery</type>
+			</droptypes>
+			<script>
+				function onDrop(x, y, draginfo)
+					if draginfo.isType("recovery") then
+						local aDice = draginfo.getDieList();
+						if aDice then
+							return;
+						end
+						local nApplied = draginfo.getNumberData();
+						local nRemainder = 0;
+
+						local nPool = getValue() + nApplied;
+						local nMax = DB.getValue(getDatabaseNode(), "..max", 10);
+						
+						if nPool > nMax then
+							nRemainder = nPool - nMax;
+							nApplied = nApplied - nRemainder;
+							nPool = nMax;
+						end
+						
+						if nApplied > 0 then
+							setValue(nPool);
+						
+							local sName = StringManager.capitalize(getDatabaseNode().getParent().getName());
+							
+							if nRemainder > 0 then
+								local rRoll = { sType = "recovery", aDice = {}, nMod = nRemainder };
+								rRoll.sDesc = string.format("[RECOVERY] [APPLIED %d TO %s] Remainder", nApplied, sName);
+								local rMessage = ActionsManager.createActionMessage(rSource, rRoll);
+								Comm.deliverChatMessage(rMessage);
+							else
+								local rRoll = {};
+								rRoll.sDesc = string.format("[RECOVERY] [APPLIED %d TO %s]", nApplied, sName);
+								local rMessage = ActionsManager.createActionMessage(rSource, rRoll);
+								Comm.deliverChatMessage(rMessage);
+							end
+						end
+						
+						return true;
+					end
+				end
+			</script>
+		</number_dropadd>
+	</template>
+	
+	<template name="button_defenseroll">
+		<button_roll>
+			<anchored width="25" height="25" />
+			<script>
+				function action(draginfo)
+					local node = window.getDatabaseNode();
+					local rActor = ActorManager.getActor("pc", node);
+					local sDesc = "[SKILL] " .. StringManager.capitalize(stat[1]) .. " Defense";
+
+					local nTraining = DB.getValue(node, "abilities." .. stat[1] .. ".def.training", 1);
+					if nTraining == 0 then
+						sDesc = sDesc .. " [INABILITY]";
+					elseif nTraining == 2 then
+						sDesc = sDesc .. " [TRAINED]";
+					elseif nTraining == 3 then
+						sDesc = sDesc .. " [SPECIALIZED]";
+					end
+					
+					local nStep = DB.getValue(node, "abilities." .. stat[1] .. ".def.asset", 0);
+					if nStep ~= 0 then
+						sDesc = sDesc .. string.format(" [ASSET %+d]", nStep);
+					end
+
+					local rRoll = { sType = "dice", sDesc = sDesc, aDice = { "d20" }, nMod = DB.getValue(node, "abilities." .. stat[1] .. ".def.misc", 0) };
+					ActionsManager.performAction(draginfo, rActor, rRoll);
+				end
+				
+				function onButtonPress()
+					action();
+					return true;
+				end
+				
+				function onDragStart(button, x, y, draginfo)
+					action(draginfo);
+					return true;
+				end
+			</script>
+		</button_roll>
+	</template>
+	<template name="button_skill">
+		<buttonfield>
+			<frame name="fielddark" offset="7,5,7,5" />
+			<stateframe>
+				<hover name="fieldfocus" offset="7,5,7,5" />
+			</stateframe>
+				<state textres="char_label_skillinability" tooltipres="char_tooltip_skillinability" />
+				<state textres="char_label_skilluntrained" tooltipres="char_tooltip_skilluntrained" />
+				<state textres="char_label_skilltrained" tooltipres="char_tooltip_skilltrained" />
+				<state textres="char_label_skillspecialized" tooltipres="char_tooltip_skillspecialized" />
+		</buttonfield>
+	</template>
+
+	<template name="button_toggledetail">
+		<buttoncontrol>
+			<anchored width="20" height="20" />
+			<state icon="details" />
+			<state icon="details_down" />
+			<script>
+				function onValueChanged()
+					if window.toggleDetail then
+						window.toggleDetail();
+					end
+				end
+			</script>
+		</buttoncontrol>
+	</template>
+</root>

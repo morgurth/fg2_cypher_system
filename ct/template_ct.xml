@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<!-- 
+  Please see the license.html file included with this distribution for 
+  attribution and copyright information.
+-->
+
+<root>
+	<template name="button_ct_damagetrack">
+		<buttonfield>
+			<frame name="fielddark" offset="7,5,7,5" />
+			<stateframe>
+				<hover name="fieldfocus" offset="7,5,7,5" />
+			</stateframe>
+			<state textres="ct_label_status_hale" tooltipres="status_hale" />
+			<state textres="ct_label_status_impaired" tooltipres="status_impaired" />
+			<state textres="ct_label_status_debilitated" tooltipres="status_debilitated" />
+			<state textres="ct_label_status_dead" tooltipres="status_dead" />
+			<script file="common/scripts/number_crosslink.lua" />
+		</buttonfield>
+	</template>
+</root>
